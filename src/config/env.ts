@@ -30,5 +30,18 @@ const envSchema = z.object({
   ADMIN_PASSWORD: z.string().optional()
 });
 
-export const env = envSchema.parse(process.env);
+const parsed = envSchema.safeParse(process.env);
+
+if (!parsed.success) {
+  const issues = parsed.error.issues
+    .map((i) => `- ${i.path.join(".")}: ${i.message}`)
+    .join("\n");
+  // Surface a clear message so serverless logs / responses explain the crash
+  throw new Error(
+    `Invalid or missing environment variables:\n${issues}\n\n` +
+      "Set these in your deployment environment (e.g. Vercel Project Settings > Environment Variables)."
+  );
+}
+
+export const env = parsed.data;
 
