@@ -3,19 +3,25 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+  schemas   = ["rentnest"]
 }
 
 enum UserRole {
   TENANT
   LANDLORD
   ADMIN
+
+  @@schema("rentnest")
 }
 
 enum UserStatus {
   ACTIVE
   BANNED
+
+  @@schema("rentnest")
 }
 
 enum RentalStatus {
@@ -24,17 +30,23 @@ enum RentalStatus {
   REJECTED
   ACTIVE
   COMPLETED
+
+  @@schema("rentnest")
 }
 
 enum PaymentStatus {
   PENDING
   COMPLETED
   FAILED
+
+  @@schema("rentnest")
 }
 
 enum PaymentProvider {
   STRIPE
   SSLCOMMERZ
+
+  @@schema("rentnest")
 }
 
 model User {
@@ -54,6 +66,8 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@schema("rentnest")
 }
 
 model Category {
@@ -64,21 +78,23 @@ model Category {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@schema("rentnest")
 }
 
 model Property {
-  id          String   @id @default(uuid())
-  title       String
-  description String
-  price       Int
-  city        String
-  division    String
-  address     String
-  bedrooms    Int
-  bathrooms   Int
-  area        Int
-  amenities   String[]
-  images      String[]
+  id           String   @id @default(uuid())
+  title        String
+  description  String
+  price        Int
+  city         String
+  division     String
+  address      String
+  bedrooms     Int
+  bathrooms    Int
+  area         Int
+  amenities    String[]
+  images       String[]
   availability Boolean  @default(true)
 
   categoryId String
@@ -97,10 +113,11 @@ model Property {
   @@index([categoryId])
   @@index([landlordId])
   @@index([price])
+  @@schema("rentnest")
 }
 
 model RentalRequest {
-  id         String      @id @default(uuid())
+  id         String       @id @default(uuid())
   tenantId   String
   propertyId String
   status     RentalStatus @default(PENDING)
@@ -118,6 +135,7 @@ model RentalRequest {
 
   @@index([tenantId])
   @@index([propertyId])
+  @@schema("rentnest")
 }
 
 model Payment {
@@ -138,11 +156,12 @@ model Payment {
   updatedAt DateTime @updatedAt
 
   @@index([tenantId])
+  @@schema("rentnest")
 }
 
 model Review {
-  id              String   @id @default(uuid())
-  rentalRequestId String   @unique
+  id              String  @id @default(uuid())
+  rentalRequestId String  @unique
   tenantId        String
   propertyId      String
   rating          Int
@@ -157,5 +176,5 @@ model Review {
 
   @@index([tenantId])
   @@index([propertyId])
+  @@schema("rentnest")
 }
-
