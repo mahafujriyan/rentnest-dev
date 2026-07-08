@@ -49,7 +49,8 @@ npx pnpm seed
 npx pnpm dev
 ```
 
-**Supabase setup guide:** [docs/SUPABASE.md](./docs/SUPABASE.md)
+**Supabase setup guide:** [docs/SUPABASE.md](./docs/SUPABASE.md)  
+**Stripe payment setup:** [docs/STRIPE.md](./docs/STRIPE.md)
 
 Server runs at `http://localhost:5000`
 

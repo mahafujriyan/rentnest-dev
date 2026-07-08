@@ -81,7 +81,7 @@ async function main() {
         title: `Property ${i + 1} in ${loc.city}`,
         description: `Spacious rental property #${i + 1} with modern amenities.`,
         categoryId: categories[i % categories.length].id,
-        price: 15000 + i * 500,
+        price: 150 + i * 10,
         city: loc.city,
         division: loc.division,
         address: `${i + 1} Main Road, ${loc.city}`,

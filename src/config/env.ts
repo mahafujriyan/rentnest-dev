@@ -18,7 +18,9 @@ const envSchema = z.object({
   BCRYPT_SALT_ROUNDS: z.coerce.number().int().min(8).max(15).default(12),
 
   STRIPE_SECRET_KEY: z.string().optional(),
+  STRIPE_PUBLISHABLE_KEY: z.string().optional(),
   STRIPE_WEBHOOK_SECRET: z.string().optional(),
+  STRIPE_CURRENCY: z.string().min(3).max(3).default("usd"),
 
   CLOUDINARY_NAME: z.string().optional(),
   CLOUDINARY_API_KEY: z.string().optional(),
