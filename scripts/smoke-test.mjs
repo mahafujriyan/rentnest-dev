@@ -26,7 +26,7 @@ async function call(method, path, body, token) {
   log("1. HEALTH:", h.status, h.json.success);
 
   // 2. Logins
-  const la = await call("POST", "/api/auth/login", { email: "admin@rentnest.com", password: "ChangeMe123!" });
+  const la = await call("POST", "/api/auth/login", { email: "admin@rentnest.com", password: "admin123" });
   adminToken = la.json.data?.accessToken || "";
   log("2. ADMIN LOGIN:", la.status, la.json.success);
 

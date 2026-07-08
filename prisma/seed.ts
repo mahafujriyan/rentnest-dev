@@ -14,7 +14,7 @@ const prisma = new PrismaClient();
 async function main() {
   const saltRounds = Number(process.env.BCRYPT_SALT_ROUNDS) || 12;
   const adminEmail = process.env.ADMIN_EMAIL || "admin@rentnest.com";
-  const adminPassword = process.env.ADMIN_PASSWORD || "ChangeMe123!";
+  const adminPassword = process.env.ADMIN_PASSWORD || "admin123";
 
   await prisma.review.deleteMany();
   await prisma.payment.deleteMany();

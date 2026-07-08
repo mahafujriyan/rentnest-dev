@@ -76,7 +76,7 @@ Full interactive docs: `http://localhost:5000/api-docs`
 
 | Role | Email | Password |
 |------|-------|----------|
-| Admin | admin@rentnest.com | ChangeMe123! |
+| Admin | admin@rentnest.com | admin123 |
 | Landlord | landlord1@rentnest.com | Landlord123! |
 | Tenant | tenant1@rentnest.com | Tenant123! |
 
@@ -98,6 +98,10 @@ Full interactive docs: `http://localhost:5000/api-docs`
 4. Ensure `CLIENT_URL` matches your frontend origin for CORS
 
 Full deployment notes: [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)
+
+## Assignment Submission
+
+See **[SUBMISSION.md](./SUBMISSION.md)** for copy-paste submission block, Postman import steps, admin credentials, and demo video guide.
 
 ## Project Structure
 
