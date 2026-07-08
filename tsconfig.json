@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "prisma/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
+
