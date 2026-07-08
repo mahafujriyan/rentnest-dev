@@ -16,6 +16,12 @@ rentalRoutes.post("/", auth("TENANT"), validateRequest(createRentalSchema), post
 rentalRoutes.get("/", auth("TENANT", "LANDLORD", "ADMIN"), validateRequest(listRentalsSchema), getRentals);
 rentalRoutes.get("/:id", auth("TENANT", "LANDLORD", "ADMIN"), validateRequest(rentalIdSchema), getRental);
 
+landlordRequestRoutes.get(
+  "/",
+  auth("LANDLORD"),
+  validateRequest(listRentalsSchema),
+  getRentals
+);
 landlordRequestRoutes.patch(
   "/:id",
   auth("LANDLORD"),
