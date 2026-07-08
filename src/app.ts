@@ -3,7 +3,9 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
+import swaggerUi from "swagger-ui-express";
 import { env } from "./config/env";
+import { swaggerSpec } from "./config/swagger";
 import { globalLimiter } from "./middlewares/rateLimit";
 import { routes } from "./routes";
 import { notFound } from "./middlewares/notFound";
@@ -27,6 +29,8 @@ app.use(cookieParser());
 app.get("/health", (_req, res) => {
   res.json({ success: true, message: "OK", data: { service: "rentnest-api" } });
 });
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/api", routes);
 
