@@ -1,9 +1,8 @@
 import type { Prisma, RentalStatus } from "@prisma/client";
 import { prisma } from "../../config/prisma";
 import { AppError } from "../../errors/AppError";
+import { ACTIVE_RENTAL_STATUSES } from "../../constants/rentalStatus";
 import { getPagination } from "../../helpers/pagination";
-
-const ACTIVE_STATUSES: RentalStatus[] = ["PENDING", "APPROVED", "ACTIVE"];
 
 const rentalSelect = {
   id: true,
@@ -41,7 +40,7 @@ export async function createRentalRequest(
     where: {
       tenantId,
       propertyId: payload.propertyId,
-      status: { in: ACTIVE_STATUSES }
+      status: { in: [...ACTIVE_RENTAL_STATUSES] }
     }
   });
   if (duplicate) throw new AppError(409, "You already have an active request for this property");
