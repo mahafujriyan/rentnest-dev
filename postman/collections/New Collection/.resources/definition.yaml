@@ -1,2 +1,23 @@
 $kind: collection
 name: New Collection
+$kind: collection
+name: New Collection
+variables:
+  - key: baseUrl
+    value: 'http://localhost:5000/api'
+  - key: token
+    value: ''
+  - key: rentalRequestId
+    value: ''
+  - key: paymentIntentId
+$kind: collection
+name: New Collection
+variables:
+  - key: baseUrl
+    value: 'http://localhost:5000/api'
+  - key: token
+    value: ''
+  - key: rentalRequestId
+    value: ''
+  - key: paymentIntentId
+    value: ''

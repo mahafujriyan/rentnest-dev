@@ -1,0 +1,4 @@
+$kind: http-request
+method: GET
+url: '{{baseUrl}}/properties?page=1&limit=10&city=Dhaka'
+order: 1000

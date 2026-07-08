@@ -1,0 +1,17 @@
+$kind: http-request
+method: POST
+url: '{{baseUrl}}/rentals'
+order: 2000
+headers:
+  - key: Authorization
+    value: 'Bearer {{token}}'
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "propertyId": "PROPERTY_UUID",
+      "moveInDate": "2026-08-01",
+      "message": "I want to rent this property"
+    }

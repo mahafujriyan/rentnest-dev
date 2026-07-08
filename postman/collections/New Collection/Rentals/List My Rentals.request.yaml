@@ -1,0 +1,14 @@
+$kind: http-request
+method: GET
+url: '{{baseUrl}}/rentals'
+order: 1000
+headers:
+  - key: Authorization
+    value: 'Bearer {{token}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      const approved = res.data?.find(r => r.status === 'APPROVED');
+      if (approved) pm.collectionVariables.set('rentalRequestId', approved.id);
