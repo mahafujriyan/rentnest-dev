@@ -22,7 +22,7 @@ Rental Property Marketplace — Backend REST API built with Node.js, Express, Ty
 ## Prerequisites
 
 - Node.js 18+
-- PostgreSQL 14+
+- [Supabase](https://supabase.com) account (free tier works — no local PostgreSQL needed)
 - pnpm (or use `npx pnpm`)
 
 ## Setup
@@ -33,7 +33,8 @@ npx pnpm install
 
 # 2. Configure environment
 cp .env.example .env
-# Edit DATABASE_URL, JWT secrets, Stripe keys, etc.
+# Set DATABASE_URL from Supabase (see docs/SUPABASE.md)
+# Set JWT_SECRET and JWT_REFRESH_SECRET (min 16 chars each)
 
 # 3. Run migrations
 npx pnpm prisma:migrate
@@ -47,6 +48,8 @@ npx pnpm seed
 # 6. Start dev server
 npx pnpm dev
 ```
+
+**Supabase setup guide:** [docs/SUPABASE.md](./docs/SUPABASE.md)
 
 Server runs at `http://localhost:5000`
 
@@ -88,9 +91,12 @@ Full interactive docs: `http://localhost:5000/api-docs`
 
 ## Deployment
 
-1. Set `NODE_ENV=production` and all env vars on your host (Render, Railway, VPS)
-2. Run `pnpm prisma:deploy && pnpm build && pnpm start`
-3. Ensure `CLIENT_URL` matches your frontend origin for CORS
+1. Use **Supabase** for PostgreSQL — see [docs/SUPABASE.md](./docs/SUPABASE.md)
+2. Set `NODE_ENV=production` and all env vars on your host (Render, Railway, VPS)
+3. Run `pnpm prisma:deploy && pnpm build && pnpm start`
+4. Ensure `CLIENT_URL` matches your frontend origin for CORS
+
+Full deployment notes: [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)
 
 ## Project Structure
 
