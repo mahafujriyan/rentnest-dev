@@ -9,11 +9,9 @@ Replace placeholders marked with `[UPDATE]` after you deploy.
 
 ```
 Backend Repo     : https://github.com/mahafujriyan/rentnest-dev
-Live API         : [UPDATE — your deployed URL, e.g. https://rentnest-api.onrender.com]
-API Docs         : Postman Collection (import from repo)
-                   https://github.com/mahafujriyan/rentnest-dev/blob/main/postman/RentNest.postman_collection.json
-                   Environment: postman/RentNest.postman_environment.json
-                   Swagger (live): [UPDATE]/api-docs
+Live API         : https://rentnest-dev.vercel.app
+API Docs         : Postman Collection — postman/RentNest.postman_collection.json
+                   Swagger — https://rentnest-dev.vercel.app/api-docs
 Demo Video       : [UPDATE — Google Drive / Loom link]
 Admin Email      : admin@rentnest.com
 Admin Password   : admin123
@@ -78,14 +76,13 @@ Image upload via Cloudinary is optional and not required for this assignment.
 
 ## Live deployment checklist
 
-1. Push code to GitHub: `https://github.com/mahafujriyan/rentnest-dev`
-2. Deploy on **Render** or **Railway** (recommended for Node + long-running server)
-3. Set environment variables from `.env.example` (Supabase `DATABASE_URL`, `DIRECT_URL`, JWT, Stripe)
-4. Build: `pnpm install && pnpm prisma generate && pnpm build`
-5. Start: `pnpm prisma db push && pnpm seed && pnpm start`
-6. Update **Live API** and **Demo Video** links in submission block above
+**Vercel guide:** [docs/VERCEL.md](./docs/VERCEL.md)
 
-> **Note:** Vercel is mainly for serverless. For Express + Prisma, **Render/Railway** is easier than Vercel.
+1. Push code to GitHub: `https://github.com/mahafujriyan/rentnest-dev`
+2. Import repo on [vercel.com](https://vercel.com) → add all env vars from `.env.example`
+3. Set `CLIENT_URL` = your Vercel URL (e.g. `https://rentnest-dev.vercel.app`)
+4. Deploy → test `GET /health` and `POST /api/auth/login`
+5. Update **Demo Video** link in [SUBMISSION.md](./SUBMISSION.md)
 
 ---
 

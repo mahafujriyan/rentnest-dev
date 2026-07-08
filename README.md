@@ -92,12 +92,14 @@ Full interactive docs: `http://localhost:5000/api-docs`
 
 ## Deployment
 
-1. Use **Supabase** for PostgreSQL — see [docs/SUPABASE.md](./docs/SUPABASE.md)
-2. Set `NODE_ENV=production` and all env vars on your host (Render, Railway, VPS)
-3. Run `pnpm prisma:deploy && pnpm build && pnpm start`
-4. Ensure `CLIENT_URL` matches your frontend origin for CORS
+**Vercel (recommended for assignment):** [docs/VERCEL.md](./docs/VERCEL.md)
 
-Full deployment notes: [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)
+1. Use **Supabase** for PostgreSQL — see [docs/SUPABASE.md](./docs/SUPABASE.md)
+2. Push to GitHub and import on [vercel.com](https://vercel.com)
+3. Add all env vars from `.env.example` in Vercel dashboard
+4. Set `CLIENT_URL` = your Vercel URL (e.g. `https://rentnest-dev.vercel.app`)
+
+Also see [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) for Render/Railway alternatives.
 
 ## Assignment Submission
 

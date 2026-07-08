@@ -9,7 +9,14 @@ export const swaggerSpec = swaggerJsdoc({
       version: "1.0.0",
       description: "Rental Property Marketplace Backend API"
     },
-    servers: [{ url: `http://localhost:${env.PORT}/api`, description: "Development" }],
+    servers: [
+      {
+        url: process.env.VERCEL_URL
+          ? `https://${process.env.VERCEL_URL}/api`
+          : `http://localhost:${env.PORT}/api`,
+        description: process.env.VERCEL_URL ? "Production (Vercel)" : "Development"
+      }
+    ],
     components: {
       securitySchemes: {
         bearerAuth: { type: "http", scheme: "bearer", bearerFormat: "JWT" }
