@@ -4,6 +4,11 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// Use direct connection for seeding (avoids pooler connection_limit issues)
+if (process.env.DIRECT_URL) {
+  process.env.DATABASE_URL = process.env.DIRECT_URL;
+}
+
 const prisma = new PrismaClient();
 
 async function main() {
@@ -36,9 +41,10 @@ async function main() {
   );
 
   const landlordPassword = await bcrypt.hash("Landlord123!", saltRounds);
-  const landlords = await Promise.all(
-    Array.from({ length: 10 }, (_, i) =>
-      prisma.user.create({
+  const landlords = [];
+  for (let i = 0; i < 10; i++) {
+    landlords.push(
+      await prisma.user.create({
         data: {
           name: `Landlord ${i + 1}`,
           email: `landlord${i + 1}@rentnest.com`,
@@ -47,13 +53,14 @@ async function main() {
           phone: `+88017${String(i + 1).padStart(8, "0")}`
         }
       })
-    )
-  );
+    );
+  }
 
   const tenantPassword = await bcrypt.hash("Tenant123!", saltRounds);
-  const tenants = await Promise.all(
-    Array.from({ length: 20 }, (_, i) =>
-      prisma.user.create({
+  const tenants = [];
+  for (let i = 0; i < 20; i++) {
+    tenants.push(
+      await prisma.user.create({
         data: {
           name: `Tenant ${i + 1}`,
           email: `tenant${i + 1}@rentnest.com`,
@@ -62,8 +69,8 @@ async function main() {
           phone: `+88018${String(i + 1).padStart(8, "0")}`
         }
       })
-    )
-  );
+    );
+  }
 
   const cities = [
     { city: "Dhaka", division: "Dhaka" },
