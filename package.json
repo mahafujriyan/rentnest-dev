@@ -18,9 +18,6 @@
   "prisma": {
     "seed": "ts-node-dev --transpile-only prisma/seed.ts"
   },
-  "pnpm": {
-    "verifyDepsBeforeRun": false
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
